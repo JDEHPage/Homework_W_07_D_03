@@ -27,11 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
       calculate: function() {
         if (this.selectedCurrencyBase === "EUR") {
             this.calculatedValue = this.amount * this.exchangeRates[this.selectedCurrencyExchange]
-            this.calculatedValue = Math.round (this.calculatedValue * 100)/100
           }else{
             this.calculatedValue = (1/this.exchangeRates[this.selectedCurrencyBase]) * this.amount * this.exchangeRates[this.selectedCurrencyExchange]
-            this.calculatedValue = Math.round (this.calculatedValue * 100)/100
           }
+          this.calculatedValue = Math.round (this.calculatedValue * 100)/100
         }
 
 
