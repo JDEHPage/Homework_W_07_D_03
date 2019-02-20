@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Forex Calculator</title>
+  <script src="./js/bundle.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+  <link href="https://fonts.googleapis.com/css?family=Exo:400,700" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+
+    <div class="container">
+
+    <h1>Currency Converter</h1>
+    <div class="selecter">
+      <label for="currency_base">Select a Base Currency</label>
+      <select id="currency_base" v-model='selectedCurrencyBase'>
+        <option disabled value=''>Select a Currency</option>
+        <option value=1>EUR</option>
+        <option v-for='(value, key) in exchangeRates' :value='key'>{{ key }}</option>
+      </select>
+    </div>
+
+    <div class="inputer">
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" v-model='amount' >
+    </div>
+
+    <div class="selecter">
+    <button v-on:click="calculate">Calculate</button>
+    </div>
+
+
+    <div class="selecter">
+      <label for="currency_exchange">Select a Exchange Currency</label>
+      <select id="currency_exchange" v-model='selectedCurrencyExchange'>
+        <option disabled value=''>Select a Currency</option>
+        <option value=1>EUR</option>
+        <option v-for='(value, key) in exchangeRates' :value='key'>{{ key }}</option>
+      </select>
+    </div>
+
+    <div class="out">
+      <p class="outputer" v-if='calculatedValue > 0'>For {{ amount }} {{ selectedCurrencyBase }} you will recieve {{ calculatedValue }} {{ selectedCurrencyExchange }}</p>
+    </div>
+
+  </div>
+
+  </div>
+</body>
+</html>
