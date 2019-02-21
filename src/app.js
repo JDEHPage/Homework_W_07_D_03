@@ -25,15 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => this.exchangeRates = data.rates)
       },
       calculate: function() {
-        if (this.selectedCurrencyBase === "EUR") {
-          this.calculatedValue = this.amount * this.exchangeRates[this.selectedCurrencyExchange]
-        }else if (this.selectedCurrencyExchange === "EUR" ) {
-          this.calculatedValue = (1/this.exchangeRates[this.selectedCurrencyBase]) * this.amount
-        } else {
-          this.calculatedValue = (1/this.exchangeRates[this.selectedCurrencyBase]) * this.amount * this.exchangeRates[this.selectedCurrencyExchange]
-        }
+        this.exchangeRates.EUR = 1
+        this.calculatedValue = (1/this.exchangeRates[this.selectedCurrencyBase]) * this.amount * this.exchangeRates[this.selectedCurrencyExchange]
         this.calculatedValue = Math.round (this.calculatedValue * 100)/100
       }
-      }
-    })
+    }
   })
+})
